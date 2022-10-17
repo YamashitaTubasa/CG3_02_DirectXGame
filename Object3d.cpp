@@ -684,6 +684,7 @@ void Object3d::UpdateViewMatrix()
 	matBillboardY.r[2] = ybillCameraAxisZ;
 	matBillboardY.r[3] = XMVectorSet(0,0,0,1);
 #pragma endregion
+
 }
 
 bool Object3d::Initialize()
