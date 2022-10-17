@@ -656,6 +656,7 @@ void Object3d::UpdateViewMatrix()
 
 	// ビュー行列に平行移動成分を設定
 	matView.r[3] = translation;
+
 }
 
 bool Object3d::Initialize()
