@@ -353,7 +353,6 @@ void Object3d::InitializeGraphicsPipeline()
 	// グラフィックスパイプラインの生成
 	result = device->CreateGraphicsPipelineState(&gpipeline, IID_PPV_ARGS(&pipelinestate));
 	assert(SUCCEEDED(result));
-
 }
 
 void Object3d::LoadTexture()
