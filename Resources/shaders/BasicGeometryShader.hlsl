@@ -219,6 +219,15 @@ static const float4 offset_array[vnum] =
 	float4(+0.5f, +0.5f, 0,0)  // 右上
 };
 
+// 左上が0,0 右下が1,1
+static const float2 uv_array[vnum] =
+{
+	float2(0, 1), // 左下
+	float2(0, 0), // 左上
+	float2(1, 1), // 右下
+	float2(1, 0)  // 右上
+};
+
 // 天の入力から、四角形を出力
 [maxvertexcount(vnum)]
 void main(
@@ -238,12 +247,3 @@ void main(
 		output.Append(element);
 	}
 }
-
-// 左上が0,0 右下が1,1
-static const float2 uv_array[vnum] =
-{
-	float2(0, 1), // 左下
-	float2(0, 0), // 左上
-	float2(1, 1), // 右下
-	float2(1. 0)  // 右上
-};
