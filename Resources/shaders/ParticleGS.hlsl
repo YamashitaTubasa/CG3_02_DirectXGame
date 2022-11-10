@@ -1,4 +1,4 @@
-#include "BasicShaderHeader.hlsli"
+#include "Particle.hlsli"
 
 // 三角形の入力から、三角形を出力するが、
 // 途中でUVを加工してタイリング
@@ -228,7 +228,7 @@ static const float2 uv_array[vnum] =
 	float2(1, 0)  // 右上
 };
 
-// 天の入力から、四角形を出力
+// 点の入力から、四角形を出力
 [maxvertexcount(vnum)]
 void main(
 	point VSOutput input[1] : SV_POSITION,
@@ -238,9 +238,11 @@ void main(
 	GSOutput element;
 	// 4点分まわす
 	for (uint i = 0; i < vnum; i++) {
-		// ワールド座標ベースで、ずらす
-		element.svpos = input[0].pos + offset_array[i];
-		// ビュー、射影変換
+		// 中心からオフセットをビルボード回転（モデル座標）
+		float4 offset = mul(matBillboard, offset_array[i]);
+		// オフセット分ずらす（ワールド座標）
+		element.svpos = input[0].pos + offset;
+		// ビュープロジェクション変換
 		element.svpos = mul(mat, element.svpos);
 		//element.uv = float2(0.5f, 0.5f);
 		element.uv = uv_array[i];
