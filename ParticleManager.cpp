@@ -197,6 +197,7 @@ void ParticleManager::InitializeCamera(int window_width, int window_height)
 		(float)window_width / window_height,
 		0.1f, 1000.0f
 	);
+
 }
 
 void ParticleManager::InitializeGraphicsPipeline()
