@@ -889,8 +889,8 @@ void ParticleManager::Draw()
 	// 描画コマンド
 	//cmdList->DrawIndexedInstanced(_countof(indices), 1, 0, 0, 0);
 	//cmdList->DrawIndexedInstanced(3, 1, 0, 0, 0);
-	//cmdList->DrawInstanced(_countof(vertices), 1, 0, 0);
-	cmdList->DrawInstanced((UINT)std::distance(particles.begin(), particles.end()), 1, 0, 0);
+	cmdList->DrawInstanced(_countof(vertices), 1, 0, 0);
+	//cmdList->DrawInstanced((UINT)std::distance(particles.begin(), particles.end()), 1, 0, 0);
 }
 
 void ParticleManager::Add(int life, XMFLOAT3 position, XMFLOAT3 velocity, XMFLOAT3 accel,

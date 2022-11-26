@@ -30,7 +30,7 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input)
 	debugText.Initialize(debugTextTexNumber);
 
 	// テクスチャ読み込み
-	Sprite::LoadTexture(1, L"Resources/background.png");
+	Sprite::LoadTexture(1, L"Resources/background.jpg");
 
 	// 背景スプライト生成
 	spriteBG = Sprite::Create(1, { 0.0f,0.0f });
@@ -39,7 +39,7 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input)
 	particleMan->Update();
 
 	//	テクスチャ2番に読み込み
-	Sprite::LoadTexture(2, L"Resources/texture.png");
+	Sprite::LoadTexture(2, L"Resources/tex.png");
 
 	// 座標{0,0}に、テクスチャ2番のスプライトを生成
 	sprite1 = Sprite::Create(2, { 0,0 });
@@ -151,8 +151,8 @@ void GameScene::Draw()
 
 	/// <summary>
 	/// ここに前景スプライトの描画処理を追加できる
-	/*sprite1->Draw();
-	sprite2->Draw();*/
+	//sprite1->Draw();
+	//sprite2->Draw();
 	/// </summary>
 
 	// デバッグテキストの描画
