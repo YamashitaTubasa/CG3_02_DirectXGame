@@ -30,7 +30,7 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input)
 	debugText.Initialize(debugTextTexNumber);
 
 	// テクスチャ読み込み
-	Sprite::LoadTexture(1, L"Resources/background.png");
+	Sprite::LoadTexture(1, L"Resources/background.jpg");
 
 	// 背景スプライト生成
 	spriteBG = Sprite::Create(1, { 0.0f,0.0f });
@@ -65,6 +65,22 @@ void GameScene::Update()
 		object3d->SetPosition(position);
 	}
 
+	// オブジェクト1移動
+	if (input->PushKey(DIK_UP) || input->PushKey(DIK_DOWN) || input->PushKey(DIK_RIGHT) || input->PushKey(DIK_LEFT))
+	{
+		// 現在の座標を取得
+		XMFLOAT3 position1 = object3d->GetPosition1();
+
+		// 移動後の座標を計算
+		if (input->PushKey(DIK_UP)) { position1.y += 1.0f; }
+		else if (input->PushKey(DIK_DOWN)) { position1.y -= 1.0f; }
+		if (input->PushKey(DIK_RIGHT)) { position1.x += 1.0f; }
+		else if (input->PushKey(DIK_LEFT)) { position1.x -= 1.0f; }
+
+		// 座標の変更を反映
+		object3d->SetPosition1(position1);
+	}
+
 	// カメラ移動
 	if (input->PushKey(DIK_W) || input->PushKey(DIK_S) || input->PushKey(DIK_D) || input->PushKey(DIK_A))
 	{
@@ -95,12 +111,11 @@ void GameScene::Draw()
 #pragma region 背景スプライト描画
 	// 背景スプライト描画前処理
 	Sprite::PreDraw(cmdList);
-	// 背景スプライト描画
-	spriteBG->Draw();
 
 	/// <summary>
 	/// ここに背景スプライトの描画処理を追加できる
 	/// </summary>
+	spriteBG->Draw();
 
 	// スプライト描画後処理
 	Sprite::PostDraw();
@@ -112,12 +127,10 @@ void GameScene::Draw()
 	// 3Dオブジェクト描画前処理
 	Object3d::PreDraw(cmdList);
 
-	// 3Dオブクジェクトの描画
-	object3d->Draw();
-
 	/// <summary>
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
+	object3d->Draw();
 
 	// 3Dオブジェクト描画後処理
 	Object3d::PostDraw();
@@ -129,9 +142,9 @@ void GameScene::Draw()
 
 	/// <summary>
 	/// ここに前景スプライトの描画処理を追加できる
+	/// </summary>
 	/*sprite1->Draw();
 	sprite2->Draw();*/
-	/// </summary>
 
 	// デバッグテキストの描画
 	debugText.DrawAll(cmdList);

@@ -41,7 +41,7 @@ private: // 定数
 	static const float radius;				// 底面の半径
 	static const float prizmHeight;			// 柱の高さ
 	static const int planeCount = division * 2 + division * 2;		// 面の数
-	/*static const int vertexCount = planeCount * 3*/	// 頂点数
+	//static const int vertexCount = planeCount * 3	// 頂点数
 	static const int vertexCount = 4; // 頂点数
 	static const int indexCount = 3 * 2; // インデックス数
 
@@ -208,25 +208,32 @@ public: // メンバ関数
 	/// </summary>
 	/// <returns>座標</returns>
 	const XMFLOAT3& GetPosition() const { return position; }
+	const XMFLOAT3& GetPosition1() const { return position1; }
 
 	/// <summary>
 	/// 座標の設定
 	/// </summary>
 	/// <param name="position">座標</param>
 	void SetPosition(const XMFLOAT3& position) { this->position = position; }
+	void SetPosition1(const XMFLOAT3& position) { this->position1 = position; }
 
 private: // メンバ変数
 	ComPtr<ID3D12Resource> constBuff; // 定数バッファ
+	ComPtr<ID3D12Resource> constBuff1;
 	// 色
 	XMFLOAT4 color = { 1,1,1,1 };
 	// ローカルスケール
 	XMFLOAT3 scale = { 1,1,1 };
+	XMFLOAT3 scale1 = { 1,1,1 };
 	// X,Y,Z軸回りのローカル回転角
 	XMFLOAT3 rotation = { 0,0,0 };
+	XMFLOAT3 rotation1 = { 0,0,0 };
 	// ローカル座標
 	XMFLOAT3 position = { 0,0,0 };
+	XMFLOAT3 position1 = { -20.0f,0,0 };
 	// ローカルワールド変換行列
 	XMMATRIX matWorld;
+	XMMATRIX matWorld1;
 	// 親オブジェクト
 	Object3d* parent = nullptr;
 };
